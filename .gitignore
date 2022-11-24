@@ -1,3 +1,7 @@
+# VS Code
+.vscode/
+src/test.cpp
+
 # Prerequisites
 *.d
 
