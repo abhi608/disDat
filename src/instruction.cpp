@@ -34,7 +34,7 @@ Instruction::Instruction(const std::string& instruction) {
         params = tokenize(std::move(match.str(2)));
     } else {
         std::cout << "Invalid instruction syntax: " << instruction << std::endl;
-        std::raise(SIGTERM);
+        exit(1);
     }
 }
 
