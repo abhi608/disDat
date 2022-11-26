@@ -1,5 +1,5 @@
-#ifndef INSTRUCTION_H
-#define INSTRUCTION_H
+#ifndef INSTRUCTION_1234_H
+#define INSTRUCTION_1234_H
 
 #include <string>
 #include <vector>

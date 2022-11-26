@@ -1,5 +1,5 @@
-#ifndef CONSTANTS_H
-#define CONSTANTS_H
+#ifndef CONSTANTS_1234_H
+#define CONSTANTS_1234_H
 
 #include <string_view>
 #include <array>

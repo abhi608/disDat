@@ -30,3 +30,10 @@ std::unordered_map<std::string, int64_t>& Transaction::get_uncommitted_variables
 void Transaction::clear_uncommitted_variables() {
     uncommitted_variables.clear();
 }
+
+bool Transaction::operator==(const Transaction& transaction_) const {
+    if(id == transaction_.id and name == transaction_.name and read_only == transaction_.read_only) {
+        return true;
+    }
+    return false;
+}

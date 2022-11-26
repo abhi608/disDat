@@ -1,5 +1,5 @@
-#ifndef LOCK_H
-#define LOCK_H
+#ifndef LOCK_1234_H
+#define LOCK_1234_H
 
 #include "variable.h"
 #include "transaction.h"
@@ -15,6 +15,7 @@ public:
     LockType get_lock_type() const;
     void set_lock_type(const LockType lock_type_);
     void set_transaction(const Transaction& transaction_);
+    bool operator==(const Lock& lock_) const;
 };
 
 #endif

@@ -1,5 +1,5 @@
-#ifndef TRANSACTION_H
-#define TRANSACTION_H
+#ifndef TRANSACTION_1234_H
+#define TRANSACTION_1234_H
 
 #include <string>
 #include <cstdint>
@@ -27,6 +27,7 @@ public:
     std::unordered_map<std::string, std::vector<int64_t>>& get_read_variables();
     std::unordered_map<std::string, int64_t>& get_uncommitted_variables();
     void clear_uncommitted_variables();
+    bool operator==(const Transaction& transaction_) const;
 };
 
 #endif

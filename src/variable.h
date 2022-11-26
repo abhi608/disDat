@@ -1,5 +1,5 @@
-#ifndef VARIABLE_H
-#define VARIABLE_H
+#ifndef VARIABLE_1234_H
+#define VARIABLE_1234_H
 
 #include <cstdint>
 #include <string>
