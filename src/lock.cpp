@@ -1,7 +1,7 @@
 #include <iostream>
 #include "lock.h"
 
-Lock::Lock(LockType lock_type_, Transaction& transaction_): lock_type(lock_type_), transaction(transaction_) {}
+Lock::Lock(const LockType lock_type_, const Transaction& transaction_): lock_type(lock_type_), transaction(transaction_) {}
 
 Transaction& Lock::get_transaction() {
     return transaction;

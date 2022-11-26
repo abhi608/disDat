@@ -14,8 +14,9 @@ private:
     int32_t current_site_id;
     int64_t value;
     LockType lock_type;
+    
 public:
-    Variable(int32_t index_, const std::string& name_, int64_t value_, int32_t current_side_id_);
+    Variable(const int32_t index_, const std::string& name_, const int64_t value_, const int32_t current_side_id_);
     int32_t get_current_site() const;
     int64_t get_value() const;
     void set_value(int64_t value_);
