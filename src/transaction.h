@@ -2,7 +2,6 @@
 #define TRANSACTION_1234_H
 
 #include <string>
-#include <cstdint>
 #include <unordered_map>
 #include <vector>
 
@@ -11,7 +10,7 @@ enum TransactionStatus {RUNNING, WAITING, BLOCKED, ABORTED, COMMITTED};
 class Transaction {
 private:
     TransactionStatus status;
-    uint32_t id;
+    int32_t id;
     std::string name;
     bool read_only;
     std::unordered_map<std::string, int64_t> uncommitted_variables;
@@ -19,8 +18,9 @@ private:
     std::unordered_map<std::string, int64_t> variable_values;
 
 public:
-    Transaction(const uint32_t id_, const std::string& name_, bool read_only_=false);  
-    uint32_t get_id() const;
+    Transaction(const int32_t id_, const std::string& name_, bool read_only_=false);  
+    int32_t get_id() const;
+    std::string& get_name();
     TransactionStatus get_status() const;
     bool is_read_only() const;
     void set_status(const TransactionStatus status_);

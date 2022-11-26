@@ -16,6 +16,7 @@ private:
     LockType lock_type;
     
 public:
+    Variable();
     Variable(const int32_t index_, const std::string& name_, const int64_t value_, const int32_t current_side_id_);
     int32_t get_current_site() const;
     int64_t get_value() const;

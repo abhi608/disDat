@@ -1,10 +1,14 @@
 #include <iostream>
 #include "transaction.h"
 
-Transaction::Transaction(const uint32_t id_, const std::string& name_, bool read_only_/*=false*/): id(id_), name(name_), read_only(read_only_) {}
+Transaction::Transaction(const int32_t id_, const std::string& name_, bool read_only_/*=false*/): id(id_), name(name_), read_only(read_only_) {}
 
-uint32_t Transaction::get_id() const {
+int32_t Transaction::get_id() const {
     return id;
+}
+
+std::string& Transaction::get_name() {
+    return name;
 }
 
 TransactionStatus Transaction::get_status() const {
