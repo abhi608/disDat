@@ -65,5 +65,3 @@ bool DataManager::write_variable(const Transaction& transaction_, const std::str
 std::unordered_map<std::string, Variable>& DataManager::get_variables() {
     return variable_map;
 }
-
-int main() {}
