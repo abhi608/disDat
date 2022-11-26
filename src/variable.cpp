@@ -24,3 +24,7 @@ LockType Variable::is_locked() {
 void Variable::set_lock_type(const LockType lock_type_) {
     lock_type = lock_type_;
 }
+
+std::string& Variable::get_name() {
+    return name;
+}

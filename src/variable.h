@@ -23,6 +23,7 @@ public:
     void set_value(int64_t value_);
     LockType is_locked();
     void set_lock_type(const LockType lock_type_);
+    std::string& get_name();
 }; 
 
 #endif
