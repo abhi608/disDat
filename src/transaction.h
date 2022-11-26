@@ -23,7 +23,7 @@ public:
     uint32_t get_id() const;
     TransactionStatus get_status() const;
     bool is_read_only() const;
-    void set_status(TransactionStatus status_);
+    void set_status(const TransactionStatus status_);
     std::unordered_map<std::string, std::vector<int64_t>>& get_read_variables();
     std::unordered_map<std::string, int64_t>& get_uncommitted_variables();
     void clear_uncommitted_variables();

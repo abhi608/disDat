@@ -20,7 +20,7 @@ public:
     int64_t get_value() const;
     void set_value(int64_t value_);
     LockType is_locked();
-    void set_lock_type(LockType lock_type_);
+    void set_lock_type(const LockType lock_type_);
 }; 
 
 #endif

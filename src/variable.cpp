@@ -19,6 +19,6 @@ LockType Variable::is_locked() {
     return lock_type;
 }
 
-void Variable::set_lock_type(LockType lock_type_) {
+void Variable::set_lock_type(const LockType lock_type_) {
     lock_type = lock_type_;
 }

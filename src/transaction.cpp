@@ -15,7 +15,7 @@ bool Transaction::is_read_only() const {
     return read_only;
 }
 
-void Transaction::set_status(TransactionStatus status_) {
+void Transaction::set_status(const TransactionStatus status_) {
     status = status_;
 }
 
