@@ -106,5 +106,13 @@ std::vector<Variable> Site::get_all_variables() {
     for(auto& [variable_name, variable] : variable_map) {
         variables.emplace_back(variable);
     }
-    return variables;
+    return std::move(variables);
+}
+
+bool Site::is_in_recovered_variables(const std::string& variable_) const {
+    return (recovered_variables.find(variable_) != recovered_variables.end());
+}
+
+DataManager& Site::get_data_manager() {
+    return data_manager;
 }

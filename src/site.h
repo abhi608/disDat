@@ -30,6 +30,8 @@ public:
     void recover();
     void dump_site();
     std::vector<Variable> get_all_variables();
+    bool is_in_recovered_variables(const std::string& variable_="") const;
+    DataManager& get_data_manager();
 };
 
 #endif
