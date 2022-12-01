@@ -23,7 +23,7 @@ public:
     SiteStatus get_status() const;
     int32_t get_id() const;
     bool get_lock(Transaction& transaction_, const LockType lock_type_, const std::string& variable_);
-    void clear_lock(const Lock& lock_, const std::string& variable_);
+    void clear_lock(Lock& lock_, const std::string& variable_);
     void write_variable(const Transaction& transaction_, const std::string& variable_name_, int64_t value_);
     void listen();
     void fail();

@@ -12,8 +12,8 @@ size_t LockTable::get_len_locks(const std::string& variable_) {
     return lock_map[variable_].size();
 }
 
-void LockTable::set_lock(const Transaction& transaction_, const LockType lock_type_, const std::string& variable_) {
-    Lock lock{lock_type_, transaction_};
+void LockTable::set_lock(Transaction& transaction_, const LockType lock_type_, const std::string& variable_) {
+    Lock lock{lock_type_, &transaction_};
     for(const Lock& lck : lock_map[variable_]) {
         if(lck == lock) return;
     }
@@ -45,9 +45,14 @@ void LockTable::free(const std::string& variable_) {
     lock_map.erase(variable_);
 }
 
-bool LockTable::clear_lock(const Lock& lock_, const std::string& variable_) {
+bool LockTable::clear_lock(Lock& lock_, const std::string& variable_) {
     if(lock_map.find(variable_) == lock_map.end()) return false;
-    std::erase_if(lock_map[variable_], [&lock_](Lock lck) {return lck == lock_;});
+    // for(auto it = lock_map[variable_].begin(); it != lock_map[variable_].end(); it++) {
+    //     if((*it) == lock_) {
+    //         lock_map[variable_].erase(it--);
+    //     }
+    // }
+    std::erase_if(lock_map[variable_], [&lock_](Lock& lck) {return lck == lock_;});
     if(lock_map[variable_].size() == 0) lock_map.erase(variable_);
     return true;
 }
@@ -55,8 +60,8 @@ bool LockTable::clear_lock(const Lock& lock_, const std::string& variable_) {
 bool LockTable::is_locked_by_transaction(const Transaction& current_transaction_, const std::string& variable_, const LockType lock_type_/*=NOLOCK*/) {
     if(lock_map.find(variable_) == lock_map.end()) return false;
     for(Lock& lck : lock_map[variable_]) {
-        Transaction& transaction_ = lck.get_transaction();
-        if(current_transaction_.get_id() == transaction_.get_id()) {
+        Transaction* transaction_ = lck.get_transaction();
+        if(current_transaction_.get_id() == transaction_->get_id()) {
             if(lock_type_ == NOLOCK or lock_type_ == lck.get_lock_type()) return true;
         }
     }

@@ -150,7 +150,7 @@ LockTable SiteManager::get_set_locks() {
     return std::move(lock_table);
 }
 
-void SiteManager::clear_locks(const Lock& lock_, const std::string& variable_name_) {
+void SiteManager::clear_locks(Lock& lock_, const std::string& variable_name_) {
     std::vector<int32_t> sites_ = get_sites(variable_name_);
     for(int32_t index : sites_) {
         Site& site_ = get_site(index);
@@ -163,3 +163,5 @@ void SiteManager::start() {
         get_site(i).listen();
     }
 }
+
+int main() {}

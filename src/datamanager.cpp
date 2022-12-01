@@ -24,7 +24,7 @@ bool DataManager::has_variable(const std::string& name_) {
     return (variable_map.find(name_) != variable_map.end());
 }
 
-void DataManager::clear_lock(const Lock& lock_, const std::string& variable_) {
+void DataManager::clear_lock(Lock& lock_, const std::string& variable_) {
     lock_table.clear_lock(lock_, variable_);
 }
 

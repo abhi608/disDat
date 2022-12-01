@@ -29,7 +29,7 @@ public:
     LockAcquireStatus get_locks(Transaction& transaction_, const LockType lock_type_, const std::string& variable_);
     std::unordered_map<std::string, int64_t> get_current_variables(const std::string& var_);
     LockTable get_set_locks();
-    void clear_locks(const Lock& lock_, const std::string& variable_name_);
+    void clear_locks(Lock& lock_, const std::string& variable_name_);
     void start();
 };
 

@@ -35,7 +35,7 @@ bool Site::get_lock(Transaction& transaction_, const LockType lock_type_, const 
     return false;
 }
 
-void Site::clear_lock(const Lock& lock_, const std::string& variable_) {
+void Site::clear_lock(Lock& lock_, const std::string& variable_) {
     data_manager.clear_lock(lock_, variable_);
 }
 
@@ -56,8 +56,8 @@ void Site::fail() {
     std::unordered_map<std::string, std::vector<Lock>>& lock_map = lock_table.get_lock_map();
     for(auto& [variable, locks] : lock_map) {
         for(auto& lock : locks) {
-            std::cout << lock.get_transaction().get_name() << " aborted as site " << id << " failed" << std::endl;
-            lock.get_transaction().set_status(ABORTED);
+            std::cout << lock.get_transaction()->get_name() << " aborted as site " << id << " failed" << std::endl;
+            lock.get_transaction()->set_status(ABORTED);
         }
     }
 }
