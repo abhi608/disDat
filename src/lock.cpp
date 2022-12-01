@@ -20,7 +20,7 @@ void Lock::set_transaction(Transaction* transaction_) {
 }
 
 bool Lock::operator==(const Lock& lock_) const {
-    if(lock_type == lock_.lock_type and transaction == lock_.transaction) {
+    if(lock_type == lock_.lock_type and (*transaction) == *(lock_.transaction)) {
         return true;
     }
     return false;

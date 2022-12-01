@@ -5,17 +5,17 @@ DataManager::DataManager(const int32_t site_id_): site_id(site_id_) {
     for(int32_t i=1; i<=20; i++) {
         if((i%2 == 0) or (1+(i%10) == site_id_)) {
             std::string name_ = "x"+std::to_string(i);
-            Variable variable_(i, name_, 10*i, site_id_);
-            variable_map[name_] = std::move(variable_);
+            Variable* variable_ = new Variable(i, name_, 10*i, site_id_);
+            variable_map[name_] = variable_;
         }
     }
 }
 
-void DataManager::add_variables(const std::string& name_, const Variable& variable_) {
+void DataManager::add_variables(const std::string& name_, Variable* variable_) {
     variable_map[name_] = variable_;
 }
 
-std::optional<Variable> DataManager::get_variable(const std::string& name_) {
+std::optional<Variable*> DataManager::get_variable(const std::string& name_) {
     if(variable_map.find(name_) == variable_map.end()) return {};
     return {variable_map[name_]};
 }
@@ -56,12 +56,12 @@ bool DataManager::get_lock(Transaction& transaction_, const LockType lock_type_,
 
 bool DataManager::write_variable(const Transaction& transaction_, const std::string& variable_name_, int64_t value_) {
     if(lock_table.is_locked_by_transaction(transaction_, variable_name_, WRITE)) {
-        variable_map[variable_name_].set_value(value_);
+        variable_map[variable_name_]->set_value(value_);
         return true;
     }
     return false;
 }
 
-std::unordered_map<std::string, Variable>& DataManager::get_variables() {
+std::unordered_map<std::string, Variable*>& DataManager::get_variables() {
     return variable_map;
 }

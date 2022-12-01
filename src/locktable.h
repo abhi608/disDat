@@ -9,11 +9,11 @@
 
 class LockTable {
 private:
-    std::unordered_map<std::string, std::vector<Lock>> lock_map;
+    std::unordered_map<std::string, std::vector<Lock*>> lock_map;
 
 public:
     LockTable();
-    std::unordered_map<std::string, std::vector<Lock>>& get_lock_map();
+    std::unordered_map<std::string, std::vector<Lock*>>& get_lock_map();
     size_t get_len_locks(const std::string& variable_);
     void set_lock(Transaction& transaction_, const LockType lock_type_, const std::string& variable_);
     bool is_locked(const std::string& variable_);

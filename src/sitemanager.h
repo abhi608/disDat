@@ -15,14 +15,14 @@ class SiteManager {
 private:
     std::size_t num_sites;
     std::size_t num_variables;
-    std::vector<Site> sites;
+    std::vector<Site*> sites;
     struct UtilFuncs;
 
 public:
     SiteManager(const std::size_t num_sites_, const std::size_t num_variables_);
     std::vector<int32_t> get_sites(const int32_t id_);
     std::vector<int32_t> get_sites(const std::string& variable_);
-    Site& get_site(const int32_t index_);
+    Site* get_site(const int32_t index_);
     void fail(const int32_t index_);
     void recover(const int32_t index_);
     void tick(Instruction& instruction_);

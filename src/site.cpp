@@ -53,17 +53,17 @@ void Site::fail() {
     set_status(DOWN);
     recovered_variables.clear();
     LockTable& lock_table = data_manager.get_lock_table();
-    std::unordered_map<std::string, std::vector<Lock>>& lock_map = lock_table.get_lock_map();
+    std::unordered_map<std::string, std::vector<Lock*>>& lock_map = lock_table.get_lock_map();
     for(auto& [variable, locks] : lock_map) {
         for(auto& lock : locks) {
-            std::cout << lock.get_transaction()->get_name() << " aborted as site " << id << " failed" << std::endl;
-            lock.get_transaction()->set_status(ABORTED);
+            std::cout << lock->get_transaction()->get_name() << " aborted as site " << id << " failed" << std::endl;
+            lock->get_transaction()->set_status(ABORTED);
         }
     }
 }
 
 void Site::recover() {
-    std::unordered_map<std::string, Variable>& variable_map = data_manager.get_variables();
+    std::unordered_map<std::string, Variable*>& variable_map = data_manager.get_variables();
     for(auto& [variable_name, variable] : variable_map) {
         if(std::stoi(variable_name.substr(1, variable_name.size()-1))%2 != 0) {
             recovered_variables.insert(variable_name);
@@ -79,20 +79,20 @@ void Site::dump_site() {
         return;
     }
     size_t count = 0;
-    std::unordered_map<std::string, Variable>& variable_map = data_manager.get_variables();
+    std::unordered_map<std::string, Variable*>& variable_map = data_manager.get_variables();
     for(auto& [variable_name, variable] : variable_map) {
         if(status == RECOVERING) {
             count++;
-            if(recovered_variables.find(variable.get_name()) == recovered_variables.end()) {
-                std::cout << variable.get_name() << " is not available for reading" << std::endl;
+            if(recovered_variables.find(variable->get_name()) == recovered_variables.end()) {
+                std::cout << variable->get_name() << " is not available for reading" << std::endl;
             } else {
-                std::cout << variable.get_name() << ": " << variable.get_value() << " (available at site " << id << " for reading as it is the only copy or has been written after recovery)" << std::endl;
+                std::cout << variable->get_name() << ": " << variable->get_value() << " (available at site " << id << " for reading as it is the only copy or has been written after recovery)" << std::endl;
             }
             continue;            
         }
-        if(variable.get_value() != std::stoi(variable_name.substr(1, variable_name.size()-1))*10) {
+        if(variable->get_value() != std::stoi(variable_name.substr(1, variable_name.size()-1))*10) {
             count++;
-            std::cout << variable.get_name() << ": " << variable.get_value() << " at site " << id << std::endl;
+            std::cout << variable->get_name() << ": " << variable->get_value() << " at site " << id << std::endl;
         }
     }
     if(count != data_manager.get_variables().size()) {
@@ -100,11 +100,11 @@ void Site::dump_site() {
     }
 }
 
-std::vector<Variable> Site::get_all_variables() {
-    std::vector<Variable> variables;
-    std::unordered_map<std::string, Variable>& variable_map = data_manager.get_variables();
+std::vector<Variable*> Site::get_all_variables() {
+    std::vector<Variable*> variables;
+    std::unordered_map<std::string, Variable*>& variable_map = data_manager.get_variables();
     for(auto& [variable_name, variable] : variable_map) {
-        variables.emplace_back(variable);
+        variables.push_back(variable);
     }
     return std::move(variables);
 }
