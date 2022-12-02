@@ -3,7 +3,7 @@
 
 struct SiteManager::UtilFuncs {
     static void _check_index_sanity(SiteManager& self, int32_t index_) {
-        if(index_ > self.num_sites or index_ <= 0) {
+        if(index_ > static_cast<int32_t>(self.num_sites) or index_ <= 0) {
             std::cout << "Index must be in the range 1 to " << self.num_sites << std::endl;
             exit(1);
         }
@@ -13,7 +13,7 @@ struct SiteManager::UtilFuncs {
 SiteManager::SiteManager(const std::size_t num_sites_, const std::size_t num_variables_): num_sites(num_sites_), num_variables(num_variables_) {
     Site *site0 = new Site(0);
     sites.push_back(site0);
-    for(int32_t i=1; i<= num_sites_; i++) {
+    for(int32_t i=1; i<= static_cast<int32_t>(num_sites_); i++) {
         Site *site_i = new Site(i);
         sites.push_back(site_i);
     }
@@ -22,13 +22,13 @@ SiteManager::SiteManager(const std::size_t num_sites_, const std::size_t num_var
 std::vector<int32_t> SiteManager::get_sites(const int32_t id_) {
     std::vector<int32_t> sites_;
     if(id_%2 == 0) {
-        for(int32_t i=1; i<= num_sites; i++) {
+        for(int32_t i=1; i<= static_cast<int32_t>(num_sites); i++) {
             sites_.emplace_back(i);
         }
     } else {
         sites_.emplace_back(1 + (id_%10));
     }
-    return std::move(sites_);
+    return sites_;
 }
 
 std::vector<int32_t> SiteManager::get_sites(const std::string& variable_) {
