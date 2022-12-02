@@ -1,0 +1,56 @@
+Starting T1
+Starting T2
+T1 got read lock on x1 having value 10
+Site: 2 failed
+T1 aborted as site 2 failed
+DEBUG| Clearing site locks for T1 variable: x1
+Clearing locks for T1 variable: x1
+T2 got write lock on x8
+T2 got read lock on x3 having value 30
+T2 read the value 30 of variable x3
+T2 committed
+DEBUG| Clearing site locks for T2 variable: x3
+Clearing locks for T2 variable: x3
+DEBUG| Clearing site locks for T2 variable: x8
+Clearing locks for T2 variable: x8
+Site: 2 recovered
+=== Site 1 ===
+x8: 88 at site 1
+All other variables have same initial value
+=== Site 2 ===
+x20 is not available for reading
+x18 is not available for reading
+x14 is not available for reading
+x16 is not available for reading
+x12 is not available for reading
+x11: 110 (available at site 2 for reading as it is the only copy or has been written after recovery)
+x10 is not available for reading
+x4 is not available for reading
+x1: 10 (available at site 2 for reading as it is the only copy or has been written after recovery)
+x2 is not available for reading
+x8 is not available for reading
+x6 is not available for reading
+=== Site 3 ===
+x8: 88 at site 3
+All other variables have same initial value
+=== Site 4 ===
+x8: 88 at site 4
+All other variables have same initial value
+=== Site 5 ===
+x8: 88 at site 5
+All other variables have same initial value
+=== Site 6 ===
+x8: 88 at site 6
+All other variables have same initial value
+=== Site 7 ===
+x8: 88 at site 7
+All other variables have same initial value
+=== Site 8 ===
+x8: 88 at site 8
+All other variables have same initial value
+=== Site 9 ===
+x8: 88 at site 9
+All other variables have same initial value
+=== Site 10 ===
+x8: 88 at site 10
+All other variables have same initial value

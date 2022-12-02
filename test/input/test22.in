@@ -1,6 +1,5 @@
 // The only site contains x3 fails and recovers during RO transaction
 // Doesn't affect T1
-
 beginRO(T1)
 R(T1, x1)
 R(T1, x2)

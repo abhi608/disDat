@@ -1,0 +1,190 @@
+Starting T1
+Starting T2
+Starting read only transaction T3
+=== Site 1 ===
+All other variables have same initial value
+=== Site 2 ===
+All other variables have same initial value
+=== Site 3 ===
+All other variables have same initial value
+=== Site 4 ===
+All other variables have same initial value
+=== Site 5 ===
+All other variables have same initial value
+=== Site 6 ===
+All other variables have same initial value
+=== Site 7 ===
+All other variables have same initial value
+=== Site 8 ===
+All other variables have same initial value
+=== Site 9 ===
+All other variables have same initial value
+=== Site 10 ===
+All other variables have same initial value
+Site: 1 failed
+Site: 3 failed
+T2 got write lock on x3
+Site: 4 failed
+T2 aborted as site 4 failed
+Site: 4 recovered
+=== Site 1 ===
+This site is down
+=== Site 2 ===
+All other variables have same initial value
+=== Site 3 ===
+This site is down
+=== Site 4 ===
+x20 is not available for reading
+x3: 30 (available at site 4 for reading as it is the only copy or has been written after recovery)
+x18 is not available for reading
+x14 is not available for reading
+x12 is not available for reading
+x16 is not available for reading
+x13: 130 (available at site 4 for reading as it is the only copy or has been written after recovery)
+x10 is not available for reading
+x4 is not available for reading
+x2 is not available for reading
+x8 is not available for reading
+x6 is not available for reading
+=== Site 5 ===
+All other variables have same initial value
+=== Site 6 ===
+All other variables have same initial value
+=== Site 7 ===
+All other variables have same initial value
+=== Site 8 ===
+All other variables have same initial value
+=== Site 9 ===
+All other variables have same initial value
+=== Site 10 ===
+All other variables have same initial value
+=== Site 1 ===
+This site is down
+=== Site 2 ===
+All other variables have same initial value
+=== Site 3 ===
+This site is down
+=== Site 4 ===
+x20 is not available for reading
+x3: 30 (available at site 4 for reading as it is the only copy or has been written after recovery)
+x18 is not available for reading
+x14 is not available for reading
+x12 is not available for reading
+x16 is not available for reading
+x13: 130 (available at site 4 for reading as it is the only copy or has been written after recovery)
+x10 is not available for reading
+x4 is not available for reading
+x2 is not available for reading
+x8 is not available for reading
+x6 is not available for reading
+=== Site 5 ===
+All other variables have same initial value
+=== Site 6 ===
+All other variables have same initial value
+=== Site 7 ===
+All other variables have same initial value
+=== Site 8 ===
+All other variables have same initial value
+=== Site 9 ===
+All other variables have same initial value
+=== Site 10 ===
+All other variables have same initial value
+DEBUG| Clearing site locks for T2 variable: x3
+Clearing locks for T2 variable: x3
+Starting T4
+Starting T5
+Starting read only transaction T6
+Site: 2 failed
+Site: 4 failed
+Site: 5 failed
+Site: 6 failed
+Site: 7 failed
+Site: 8 failed
+Site: 9 failed
+T5 committed
+=== Site 1 ===
+This site is down
+=== Site 2 ===
+This site is down
+=== Site 3 ===
+This site is down
+=== Site 4 ===
+This site is down
+=== Site 5 ===
+This site is down
+=== Site 6 ===
+This site is down
+=== Site 7 ===
+This site is down
+=== Site 8 ===
+This site is down
+=== Site 9 ===
+This site is down
+=== Site 10 ===
+All other variables have same initial value
+Site: 4 recovered
+Site: 2 failed
+=== Site 1 ===
+This site is down
+=== Site 2 ===
+This site is down
+=== Site 3 ===
+This site is down
+=== Site 4 ===
+x20 is not available for reading
+x3: 30 (available at site 4 for reading as it is the only copy or has been written after recovery)
+x18 is not available for reading
+x14 is not available for reading
+x12 is not available for reading
+x16 is not available for reading
+x13: 130 (available at site 4 for reading as it is the only copy or has been written after recovery)
+x10 is not available for reading
+x4 is not available for reading
+x2 is not available for reading
+x8 is not available for reading
+x6 is not available for reading
+=== Site 5 ===
+This site is down
+=== Site 6 ===
+This site is down
+=== Site 7 ===
+This site is down
+=== Site 8 ===
+This site is down
+=== Site 9 ===
+This site is down
+=== Site 10 ===
+All other variables have same initial value
+Starting T7
+T6 committed
+=== Site 1 ===
+This site is down
+=== Site 2 ===
+This site is down
+=== Site 3 ===
+This site is down
+=== Site 4 ===
+x20 is not available for reading
+x3: 30 (available at site 4 for reading as it is the only copy or has been written after recovery)
+x18 is not available for reading
+x14 is not available for reading
+x12 is not available for reading
+x16 is not available for reading
+x13: 130 (available at site 4 for reading as it is the only copy or has been written after recovery)
+x10 is not available for reading
+x4 is not available for reading
+x2 is not available for reading
+x8 is not available for reading
+x6 is not available for reading
+=== Site 5 ===
+This site is down
+=== Site 6 ===
+This site is down
+=== Site 7 ===
+This site is down
+=== Site 8 ===
+This site is down
+=== Site 9 ===
+This site is down
+=== Site 10 ===
+All other variables have same initial value

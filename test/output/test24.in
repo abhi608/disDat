@@ -1,0 +1,53 @@
+Starting T1
+Starting T2
+Starting T3
+T1 got read lock on x2 having value 20
+DEBUG| T2 did not get write lock on x2 site: 1
+T2 is blocked for a write lock by T1 on x2
+T3 will not get a read lock on x2 because T2 is already waiting for a write lock
+T1 read the value 20 of variable x2
+T1 committed
+DEBUG| Clearing site locks for T1 variable: x2
+Clearing locks for T1 variable: x2
+T3 got read lock on x2 having value 20
+DEBUG| T2 did not get write lock on x2 site: 1
+T2 is blocked for a write lock by T3 on x2
+Site: 3 failed
+T2 aborted as site 3 failed
+Site: 3 recovered
+DEBUG| Clearing site locks for T2 variable: x2
+Clearing locks for T2 variable: x2
+T3 already has a read lock on x2
+T3 read the value 20 of variable x2
+T3 committed
+DEBUG| Clearing site locks for T3 variable: x2
+Clearing locks for T3 variable: x2
+=== Site 1 ===
+All other variables have same initial value
+=== Site 2 ===
+All other variables have same initial value
+=== Site 3 ===
+x20 is not available for reading
+x18 is not available for reading
+x16 is not available for reading
+x12 is not available for reading
+x10 is not available for reading
+x4 is not available for reading
+x14 is not available for reading
+x2 is not available for reading
+x8 is not available for reading
+x6 is not available for reading
+=== Site 4 ===
+All other variables have same initial value
+=== Site 5 ===
+All other variables have same initial value
+=== Site 6 ===
+All other variables have same initial value
+=== Site 7 ===
+All other variables have same initial value
+=== Site 8 ===
+All other variables have same initial value
+=== Site 9 ===
+All other variables have same initial value
+=== Site 10 ===
+All other variables have same initial value
