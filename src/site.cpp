@@ -24,7 +24,7 @@ int32_t Site::get_id() const {
     return id;
 }
 
-bool Site::get_lock(Transaction& transaction_, const LockType lock_type_, const std::string& variable_) {
+bool Site::get_lock(Transaction* transaction_, const LockType lock_type_, const std::string& variable_) {
     if(data_manager.get_lock(transaction_, lock_type_, variable_)) {
         recovered_variables.insert(variable_);
         if(recovered_variables.size() == data_manager.get_variables().size()) {
@@ -35,11 +35,11 @@ bool Site::get_lock(Transaction& transaction_, const LockType lock_type_, const 
     return false;
 }
 
-void Site::clear_lock(Lock& lock_, const std::string& variable_) {
+void Site::clear_lock(Lock* lock_, const std::string& variable_) {
     data_manager.clear_lock(lock_, variable_);
 }
 
-void Site::write_variable(const Transaction& transaction_, const std::string& variable_name_, int64_t value_) {
+void Site::write_variable(Transaction* transaction_, const std::string& variable_name_, int64_t value_) {
     if(status != DOWN and recovered_variables.find(variable_name_) != recovered_variables.end()) {
         data_manager.write_variable(transaction_, variable_name_, value_);
     }
@@ -53,7 +53,7 @@ void Site::fail() {
     set_status(DOWN);
     recovered_variables.clear();
     LockTable& lock_table = data_manager.get_lock_table();
-    std::unordered_map<std::string, std::vector<Lock*>>& lock_map = lock_table.get_lock_map();
+    std::map<std::string, std::vector<Lock*>>& lock_map = lock_table.get_lock_map();
     for(auto& [variable, locks] : lock_map) {
         for(auto& lock : locks) {
             std::cout << lock->get_transaction()->get_name() << " aborted as site " << id << " failed" << std::endl;

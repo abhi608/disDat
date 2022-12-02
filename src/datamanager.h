@@ -17,10 +17,10 @@ public:
     void add_variables(const std::string& name_, Variable* variable_);
     std::optional<Variable*> get_variable(const std::string& name_);
     bool has_variable(const std::string& name_);
-    void clear_lock(Lock& lock_, const std::string& variable_);
+    void clear_lock(Lock* lock_, const std::string& variable_);
     LockTable& get_lock_table();
-    bool get_lock(Transaction& transaction_, const LockType lock_type_, const std::string& variable_);
-    bool write_variable(const Transaction& transaction_, const std::string& variable_name_, int64_t value_);
+    bool get_lock(Transaction* transaction_, const LockType lock_type_, const std::string& variable_);
+    bool write_variable(Transaction* transaction_, const std::string& variable_name_, int64_t value_);
     std::unordered_map<std::string, Variable*>& get_variables();
 };
 

@@ -8,7 +8,6 @@ class Instruction {
 private:
     std::string instruction_type;
     std::vector<std::string> params;
-    struct UtilFuncs;
 
 public:
     Instruction(const std::string& instruction);

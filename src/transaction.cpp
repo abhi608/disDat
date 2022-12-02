@@ -35,6 +35,14 @@ void Transaction::clear_uncommitted_variables() {
     uncommitted_variables.clear();
 }
 
+std::unordered_map<std::string, int64_t>& Transaction::get_variable_values() {
+    return variable_values;
+}
+
+void Transaction::set_variable_values(std::unordered_map<std::string, int64_t> variable_values_) {
+    variable_values = std::move(variable_values_);
+}
+
 bool Transaction::operator==(const Transaction& transaction_) const {
     if(id == transaction_.id and name == transaction_.name and read_only == transaction_.read_only) {
         return true;

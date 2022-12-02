@@ -24,7 +24,7 @@ bool DataManager::has_variable(const std::string& name_) {
     return (variable_map.find(name_) != variable_map.end());
 }
 
-void DataManager::clear_lock(Lock& lock_, const std::string& variable_) {
+void DataManager::clear_lock(Lock* lock_, const std::string& variable_) {
     lock_table.clear_lock(lock_, variable_);
 }
 
@@ -32,7 +32,7 @@ LockTable& DataManager::get_lock_table() {
     return lock_table;
 }
 
-bool DataManager::get_lock(Transaction& transaction_, const LockType lock_type_, const std::string& variable_) {
+bool DataManager::get_lock(Transaction* transaction_, const LockType lock_type_, const std::string& variable_) {
     bool is_locked_by_txn = lock_table.is_locked_by_transaction(transaction_, variable_);
     if(is_locked_by_txn) {
         if(lock_table.get_len_locks(variable_) == 1) {
@@ -49,12 +49,12 @@ bool DataManager::get_lock(Transaction& transaction_, const LockType lock_type_,
         lock_table.set_lock(transaction_, lock_type_, variable_);
         return true;
     }
-    if(lock_type_ == WRITE) std::cout << "DEBUG| " << transaction_.get_name() << " did not get write lock on " << variable_ << " site: " << site_id << std::endl;
-    else std::cout << "DEBUG| " << transaction_.get_name() << " did not get read lock on " << variable_ << " site: " << site_id << std::endl;
+    if(lock_type_ == WRITE) std::cout << "DEBUG| " << transaction_->get_name() << " did not get write lock on " << variable_ << " site: " << site_id << std::endl;
+    else std::cout << "DEBUG| " << transaction_->get_name() << " did not get read lock on " << variable_ << " site: " << site_id << std::endl;
     return false;
 }
 
-bool DataManager::write_variable(const Transaction& transaction_, const std::string& variable_name_, int64_t value_) {
+bool DataManager::write_variable(Transaction* transaction_, const std::string& variable_name_, int64_t value_) {
     if(lock_table.is_locked_by_transaction(transaction_, variable_name_, WRITE)) {
         variable_map[variable_name_]->set_value(value_);
         return true;

@@ -79,7 +79,7 @@ void SiteManager::tick(Instruction& instruction_) {
     }
 }
 
-LockAcquireStatus SiteManager::get_locks(Transaction& transaction_, const LockType lock_type_, const std::string& variable_) {
+LockAcquireStatus SiteManager::get_locks(Transaction* transaction_, const LockType lock_type_, const std::string& variable_) {
     std::vector<int32_t> sites_ = get_sites(variable_);
     bool flag = true, recovering_flag = false, all_sites_down = true, even_index = (std::stoi(variable_.substr(1, variable_.size()-1))%2 == 0);
     for(int32_t site_ : sites_) {
@@ -141,7 +141,7 @@ LockTable SiteManager::get_set_locks() {
     LockTable lock_table;
     for(int32_t i=1; i<=num_sites; i++) {
         Site* site_ = get_site(i);
-        std::unordered_map<std::string, std::vector<Lock*>>& lock_map = site_->get_data_manager().get_lock_table().get_lock_map();
+        std::map<std::string, std::vector<Lock*>>& lock_map = site_->get_data_manager().get_lock_table().get_lock_map();
         for(auto& [var_, curr_locks_] : lock_map) {
             for(Lock* lock_ : curr_locks_) {
                 lock_table.get_lock_map()[var_].push_back(lock_);
@@ -151,7 +151,7 @@ LockTable SiteManager::get_set_locks() {
     return std::move(lock_table);
 }
 
-void SiteManager::clear_locks(Lock& lock_, const std::string& variable_name_) {
+void SiteManager::clear_locks(Lock* lock_, const std::string& variable_name_) {
     std::vector<int32_t> sites_ = get_sites(variable_name_);
     for(int32_t index : sites_) {
         get_site(index)->clear_lock(lock_, variable_name_);;

@@ -27,6 +27,8 @@ public:
     std::unordered_map<std::string, std::vector<int64_t>>& get_read_variables();
     std::unordered_map<std::string, int64_t>& get_uncommitted_variables();
     void clear_uncommitted_variables();
+    std::unordered_map<std::string, int64_t>& get_variable_values();
+    void set_variable_values(std::unordered_map<std::string, int64_t> variable_values_);
     bool operator==(const Transaction& transaction_) const;
 };
 
