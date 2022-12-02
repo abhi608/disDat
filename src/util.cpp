@@ -21,5 +21,5 @@ std::vector<std::string> Util::tokenize(std::string str, const std::string& deli
         str.erase(0, pos + delimiter.length());
     }
     params.push_back(Util::trim(str));
-    return std::move(params);
+    return params;
 }

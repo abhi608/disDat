@@ -33,7 +33,7 @@ std::vector<Instruction> IO::process_instruction(std::string& line) {
         if(instruction.find("//") != std::string::npos) continue;
         instructions.emplace_back(Instruction(instruction));
     }
-    return std::move(instructions);
+    return instructions;
 }
 
 void IO::run() {

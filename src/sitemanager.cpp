@@ -56,7 +56,7 @@ void SiteManager::tick(Instruction& instruction_) {
     std::vector<std::string>& params = instruction_.get_params();
     if(instruction_.get_instruction_type() == DUMP_FUNC) {
         if(params[0].size() == 0) {
-            for(int32_t i=1; i<= num_sites; i++) {
+            for(int32_t i=1; i<= static_cast<int32_t>(num_sites); i++) {
                 get_site(i)->dump_site();
             }
         } else if(params[0][0] == 'x') {
@@ -104,7 +104,7 @@ LockAcquireStatus SiteManager::get_locks(Transaction* transaction_, const LockTy
 
 std::unordered_map<std::string, int64_t> SiteManager::get_current_variables(const std::string& var_) {
     std::unordered_map<std::string, int64_t> variable_values;
-    for(int32_t i=1; i<=num_sites; i++) {
+    for(int32_t i=1; i<= static_cast<int32_t>(num_sites); i++) {
         Site* site_ = get_site(i);
         if(site_->get_status() == UP) {
             std::vector<Variable*> variables_ = site_->get_all_variables();
@@ -112,7 +112,7 @@ std::unordered_map<std::string, int64_t> SiteManager::get_current_variables(cons
                 if(var_ != "" and variable_->get_name() == var_) {
                     variable_values.clear();
                     variable_values[var_] = variable_->get_value();
-                    return std::move(variable_values);
+                    return variable_values;
                 }
                 variable_values[variable_->get_name()] = variable_->get_value();
             }
@@ -124,7 +124,7 @@ std::unordered_map<std::string, int64_t> SiteManager::get_current_variables(cons
                     if(var_ != "" and variable_->get_name() == var_) {
                         variable_values.clear();
                         variable_values[var_] = variable_->get_value();
-                        return std::move(variable_values);
+                        return variable_values;
                     }
                     variable_values[variable_->get_name()] = variable_->get_value();
                 }
@@ -139,7 +139,7 @@ std::unordered_map<std::string, int64_t> SiteManager::get_current_variables(cons
 
 LockTable SiteManager::get_set_locks() {
     std::map<std::string, std::vector<Lock*>> locks;
-    for(int32_t i=1; i<=num_sites; i++) {
+    for(int32_t i=1; i<= static_cast<int32_t>(num_sites); i++) {
         // std::cout << "Site: " << i << std::endl;
         Site* site_ = get_site(i);
         std::map<std::string, std::vector<Lock*>>& lock_map = site_->get_data_manager().get_lock_table().get_lock_map();
@@ -198,7 +198,7 @@ void SiteManager::clear_locks(Lock* lock_, const std::string& variable_name_) {
 }
 
 void SiteManager::start() {
-    for(int32_t i=1; i<=num_sites; i++) {
+    for(int32_t i=1; i<= static_cast<int32_t>(num_sites); i++) {
         get_site(i)->listen();
     }
 }

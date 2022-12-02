@@ -106,7 +106,7 @@ std::vector<Variable*> Site::get_all_variables() {
     for(auto& [variable_name, variable] : variable_map) {
         variables.push_back(variable);
     }
-    return std::move(variables);
+    return variables;
 }
 
 bool Site::is_in_recovered_variables(const std::string& variable_) const {

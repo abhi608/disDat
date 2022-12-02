@@ -48,7 +48,7 @@ std::unordered_map<std::string, std::vector<TransactionInfo>> TransactionManager
             squashed_blocked_transactions[transaction_name].push_back(blocked_transaction_info);
         }
     }
-    return std::move(squashed_blocked_transactions);
+    return squashed_blocked_transactions;
 }
 
 std::unordered_map<std::string, std::vector<TransactionInfo>> TransactionManager::get_squashed_waiting_transactions() {
@@ -58,7 +58,7 @@ std::unordered_map<std::string, std::vector<TransactionInfo>> TransactionManager
             squashed_waiting_transactions[transaction_name].push_back(waiting_transaction_info);
         }
     }
-    return std::move(squashed_waiting_transactions);
+    return squashed_waiting_transactions;
 }
 
 void TransactionManager::clear_deadlock(std::vector<std::string>& transaction_list_, const int32_t index) {
@@ -136,7 +136,7 @@ void TransactionManager::blocked_to_waiting() {
                     if(squashed_blocked_transactions.find(key) != squashed_waiting_transactions.end()) {
                         for(auto& bl_transaction_info : squashed_waiting_transactions[key]) {
                             if(bl_transaction_info.len != blocked_transaction_info.len - 1) continue;
-                            if(bl_transaction_info.len == 3 and (bl_transaction_info.instruction_type != blocked_transaction_info.instruction_type or bl_transaction_info.variable != blocked_transaction_info.variable or bl_transaction_info.value != bl_transaction_info.value)) continue;
+                            if(bl_transaction_info.len == 3 and (bl_transaction_info.instruction_type != blocked_transaction_info.instruction_type or bl_transaction_info.variable != blocked_transaction_info.variable or bl_transaction_info.value != blocked_transaction_info.value)) continue;
                             if(bl_transaction_info.len == 2 and (bl_transaction_info.instruction_type != blocked_transaction_info.instruction_type or bl_transaction_info.variable != blocked_transaction_info.variable)) continue;
                             flag = true;
                             break;
