@@ -2,7 +2,12 @@
 #include "io.h"
 #include "util.h"
 
-IO::IO(const std::string& file_name_, SiteManager* site_manager_, TransactionManager* transaction_manager_, LockTable* lock_table_): file_name(file_name_), file(file_name_, std::ifstream::in), site_manager(site_manager_), transaction_manager(transaction_manager_), lock_table(lock_table_) {}
+IO::IO(const std::string& file_name_, SiteManager* site_manager_, TransactionManager* transaction_manager_, LockTable* lock_table_): file_name(file_name_), file(file_name_, std::ifstream::in), site_manager(site_manager_), transaction_manager(transaction_manager_), lock_table(lock_table_) {
+    if(!file) {
+        std::cout << "File " << file_name_ << " does not exist." << std::endl;
+        exit(1);
+    }
+}
 
 std::optional<std::vector<Instruction>> IO::get_next_instruction() {
     std::vector<Instruction> instr;

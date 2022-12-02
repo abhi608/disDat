@@ -3,7 +3,7 @@
 
 Variable::Variable() = default;
 
-Variable::Variable(const int32_t index_, const std::string& name_, const int64_t value_, const int32_t current_side_id_): index(index_), name(name_), value(value_), current_site_id(current_side_id_), lock_type(NOLOCK) {}
+Variable::Variable(const int32_t index_, const std::string& name_, const int64_t value_, const int32_t current_side_id_): index(index_), name(name_), current_site_id(current_side_id_), value(value_), lock_type(NOLOCK) {}
 
 int32_t Variable::get_current_site() const {
     return current_site_id;
