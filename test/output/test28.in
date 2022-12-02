@@ -1,0 +1,115 @@
+Starting T1
+Starting T2
+Starting T3
+Starting T4
+Starting T5
+Starting T6
+T1 got read lock on x1 having value 10
+T2 got read lock on x2 having value 20
+T3 got read lock on x3 having value 30
+T4 got read lock on x4 having value 40
+T5 got read lock on x5 having value 50
+T6 got read lock on x6 having value 60
+T3 got read lock on x6 having value 60
+DEBUG| T6 did not get write lock on x1 site: 2
+T6 is blocked for a write lock by T1 on x1
+DEBUG| T1 did not get write lock on x2 site: 1
+T1 is blocked for a write lock by T2 on x2
+DEBUG| T6 did not get write lock on x1 site: 2
+T6 is blocked for a write lock by T1 on x1
+DEBUG| T2 did not get write lock on x3 site: 4
+T2 is blocked for a write lock by T3 on x3
+DEBUG| T6 did not get write lock on x1 site: 2
+T6 is blocked for a write lock by T1 on x1
+DEBUG| T1 did not get write lock on x2 site: 1
+T1 is blocked for a write lock by T2 on x2
+DEBUG| T3 did not get write lock on x4 site: 1
+T3 is blocked for a write lock by T4 on x4
+DEBUG| T6 did not get write lock on x1 site: 2
+T6 is blocked for a write lock by T1 on x1
+DEBUG| T1 did not get write lock on x2 site: 1
+T1 is blocked for a write lock by T2 on x2
+DEBUG| T2 did not get write lock on x3 site: 4
+T2 is blocked for a write lock by T3 on x3
+DEBUG| T4 did not get write lock on x5 site: 6
+T4 is blocked for a write lock by T5 on x5
+DEBUG| T6 did not get write lock on x1 site: 2
+T6 is blocked for a write lock by T1 on x1
+DEBUG| T1 did not get write lock on x2 site: 1
+T1 is blocked for a write lock by T2 on x2
+DEBUG| T2 did not get write lock on x3 site: 4
+T2 is blocked for a write lock by T3 on x3
+DEBUG| T3 did not get write lock on x4 site: 1
+T3 is blocked for a write lock by T4 on x4
+DEBUG| T5 did not get write lock on x6 site: 1
+T5 is blocked for a write lock by T6 on x6
+T5 is blocked for a write lock by T3 on x6
+T6 aborted as it is youngest in a deadlock
+DEBUG| Clearing site locks for T6 variable: x6
+Clearing locks for T6 variable: x6
+T5 aborted as it is youngest in a deadlock
+DEBUG| Clearing site locks for T5 variable: x5
+Clearing locks for T5 variable: x5
+DEBUG| Clearing site locks for T5 variable: x6
+Clearing locks for T5 variable: x6
+DEBUG| T1 did not get write lock on x2 site: 1
+T1 is blocked for a write lock by T2 on x2
+DEBUG| T2 did not get write lock on x3 site: 4
+T2 is blocked for a write lock by T3 on x3
+DEBUG| T3 did not get write lock on x4 site: 1
+T3 is blocked for a write lock by T4 on x4
+T4 got write lock on x5
+T1 read the value 10 of variable x1
+T1 committed
+DEBUG| Clearing site locks for T1 variable: x1
+Clearing locks for T1 variable: x1
+DEBUG| Clearing site locks for T1 variable: x2
+Clearing locks for T1 variable: x2
+DEBUG| T2 did not get write lock on x3 site: 4
+T2 is blocked for a write lock by T3 on x3
+DEBUG| T3 did not get write lock on x4 site: 1
+DEBUG| T2 did not get write lock on x3 site: 4
+T2 is blocked for a write lock by T3 on x3
+DEBUG| T3 did not get write lock on x4 site: 1
+T2 read the value 20 of variable x2
+T2 committed
+DEBUG| Clearing site locks for T2 variable: x2
+Clearing locks for T2 variable: x2
+DEBUG| T3 did not get write lock on x4 site: 1
+DEBUG| T3 did not get write lock on x4 site: 1
+T3 read the value 60 of variable x6
+T3 read the value 30 of variable x3
+T3 committed
+DEBUG| Clearing site locks for T3 variable: x3
+Clearing locks for T3 variable: x3
+DEBUG| Clearing site locks for T3 variable: x4
+Clearing locks for T3 variable: x4
+DEBUG| Clearing site locks for T3 variable: x6
+Clearing locks for T3 variable: x6
+T4 read the value 40 of variable x4
+T4 committed
+DEBUG| Clearing site locks for T4 variable: x4
+Clearing locks for T4 variable: x4
+DEBUG| Clearing site locks for T4 variable: x5
+Clearing locks for T4 variable: x5
+=== Site 1 ===
+All other variables have same initial value
+=== Site 2 ===
+All other variables have same initial value
+=== Site 3 ===
+All other variables have same initial value
+=== Site 4 ===
+All other variables have same initial value
+=== Site 5 ===
+All other variables have same initial value
+=== Site 6 ===
+x5: 45 at site 6
+All other variables have same initial value
+=== Site 7 ===
+All other variables have same initial value
+=== Site 8 ===
+All other variables have same initial value
+=== Site 9 ===
+All other variables have same initial value
+=== Site 10 ===
+All other variables have same initial value

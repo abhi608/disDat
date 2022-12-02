@@ -1,0 +1,225 @@
+Starting T10
+Starting T3
+Starting T5
+Starting T4
+Starting T1
+Starting T6
+Starting T7
+Starting T8
+Starting T9
+Starting T2
+T1 got read lock on x1 having value 10
+T2 got read lock on x2 having value 20
+T3 got read lock on x3 having value 30
+T4 got read lock on x4 having value 40
+T5 got read lock on x5 having value 50
+T6 got read lock on x6 having value 60
+T7 got read lock on x7 having value 70
+T8 got read lock on x8 having value 80
+T9 got read lock on x9 having value 90
+T10 got read lock on x10 having value 100
+DEBUG| T1 did not get write lock on x2 site: 1
+T1 is blocked for a write lock by T2 on x2
+T10 got read lock on x9 having value 90
+T3 got read lock on x1 having value 10
+T8 got read lock on x6 having value 60
+DEBUG| T7 did not get write lock on x8 site: 1
+T7 is blocked for a write lock by T8 on x8
+DEBUG| T2 did not get write lock on x3 site: 4
+T2 is blocked for a write lock by T3 on x3
+DEBUG| T1 did not get write lock on x2 site: 1
+T1 is blocked for a write lock by T2 on x2
+DEBUG| T8 did not get write lock on x9 site: 10
+T8 is blocked for a write lock by T9 on x9
+T8 is blocked for a write lock by T10 on x9
+DEBUG| T1 did not get write lock on x2 site: 1
+T1 is blocked for a write lock by T2 on x2
+DEBUG| T7 did not get write lock on x8 site: 1
+T7 is blocked for a write lock by T8 on x8
+DEBUG| T3 did not get write lock on x4 site: 1
+T3 is blocked for a write lock by T4 on x4
+DEBUG| T1 did not get write lock on x2 site: 1
+T1 is blocked for a write lock by T2 on x2
+DEBUG| T7 did not get write lock on x8 site: 1
+T7 is blocked for a write lock by T8 on x8
+DEBUG| T2 did not get write lock on x3 site: 4
+T2 is blocked for a write lock by T3 on x3
+DEBUG| T4 did not get write lock on x5 site: 6
+T4 is blocked for a write lock by T5 on x5
+DEBUG| T1 did not get write lock on x2 site: 1
+T1 is blocked for a write lock by T2 on x2
+DEBUG| T7 did not get write lock on x8 site: 1
+T7 is blocked for a write lock by T8 on x8
+DEBUG| T2 did not get write lock on x3 site: 4
+T2 is blocked for a write lock by T3 on x3
+DEBUG| T3 did not get write lock on x4 site: 1
+T3 is blocked for a write lock by T4 on x4
+DEBUG| T5 did not get write lock on x1 site: 2
+T5 is blocked for a write lock by T1 on x1
+T5 is blocked for a write lock by T3 on x1
+T2 aborted as it is youngest in a deadlock
+DEBUG| Clearing site locks for T2 variable: x2
+Clearing locks for T2 variable: x2
+T4 aborted as it is youngest in a deadlock
+DEBUG| Clearing site locks for T4 variable: x4
+Clearing locks for T4 variable: x4
+T1 got write lock on x2
+DEBUG| T7 did not get write lock on x8 site: 1
+T7 is blocked for a write lock by T8 on x8
+T3 got write lock on x4
+DEBUG| T5 did not get write lock on x1 site: 2
+T5 is blocked for a write lock by T1 on x1
+T5 is blocked for a write lock by T3 on x1
+DEBUG| T9 did not get write lock on x10 site: 1
+T9 is blocked for a write lock by T10 on x10
+DEBUG| T7 did not get write lock on x8 site: 1
+T7 is blocked for a write lock by T8 on x8
+DEBUG| T5 did not get write lock on x1 site: 2
+DEBUG| T6 did not get write lock on x7 site: 8
+T6 is blocked for a write lock by T7 on x7
+DEBUG| T7 did not get write lock on x8 site: 1
+T7 is blocked for a write lock by T8 on x8
+DEBUG| T5 did not get write lock on x1 site: 2
+DEBUG| T6 did not get write lock on x7 site: 8
+T6 is blocked for a write lock by T7 on x7
+DEBUG| T10 did not get write lock on x6 site: 1
+T10 is blocked for a write lock by T6 on x6
+T10 is blocked for a write lock by T8 on x6
+T8 aborted as it is youngest in a deadlock
+DEBUG| Clearing site locks for T8 variable: x6
+Clearing locks for T8 variable: x6
+DEBUG| Clearing site locks for T8 variable: x8
+Clearing locks for T8 variable: x8
+T7 got write lock on x8
+DEBUG| T5 did not get write lock on x1 site: 2
+DEBUG| T6 did not get write lock on x7 site: 8
+T6 is blocked for a write lock by T7 on x7
+DEBUG| T10 did not get write lock on x6 site: 1
+T10 is blocked for a write lock by T6 on x6
+DEBUG| T9 did not get write lock on x10 site: 1
+T9 is blocked for a write lock by T10 on x10
+T10 read the value 90 of variable x9
+T10 read the value 100 of variable x10
+T10 committed
+DEBUG| Clearing site locks for T10 variable: x10
+Clearing locks for T10 variable: x10
+DEBUG| Clearing site locks for T10 variable: x6
+Clearing locks for T10 variable: x6
+DEBUG| Clearing site locks for T10 variable: x9
+Clearing locks for T10 variable: x9
+DEBUG| T5 did not get write lock on x1 site: 2
+DEBUG| T6 did not get write lock on x7 site: 8
+T9 got write lock on x10
+DEBUG| T5 did not get write lock on x1 site: 2
+DEBUG| T6 did not get write lock on x7 site: 8
+T9 read the value 90 of variable x9
+T9 committed
+DEBUG| Clearing site locks for T9 variable: x10
+Clearing locks for T9 variable: x10
+DEBUG| Clearing site locks for T9 variable: x9
+Clearing locks for T9 variable: x9
+DEBUG| T5 did not get write lock on x1 site: 2
+DEBUG| T6 did not get write lock on x7 site: 8
+DEBUG| T5 did not get write lock on x1 site: 2
+DEBUG| T6 did not get write lock on x7 site: 8
+DEBUG| T5 did not get write lock on x1 site: 2
+DEBUG| T6 did not get write lock on x7 site: 8
+T7 read the value 70 of variable x7
+T7 committed
+DEBUG| Clearing site locks for T7 variable: x7
+Clearing locks for T7 variable: x7
+DEBUG| Clearing site locks for T7 variable: x8
+Clearing locks for T7 variable: x8
+DEBUG| T5 did not get write lock on x1 site: 2
+T6 got write lock on x7
+DEBUG| T5 did not get write lock on x1 site: 2
+T6 read the value 60 of variable x6
+T6 committed
+DEBUG| Clearing site locks for T6 variable: x6
+Clearing locks for T6 variable: x6
+DEBUG| Clearing site locks for T6 variable: x7
+Clearing locks for T6 variable: x7
+DEBUG| T5 did not get write lock on x1 site: 2
+DEBUG| T5 did not get write lock on x1 site: 2
+T1 read the value 10 of variable x1
+T1 committed
+DEBUG| Clearing site locks for T1 variable: x1
+Clearing locks for T1 variable: x1
+DEBUG| Clearing site locks for T1 variable: x2
+Clearing locks for T1 variable: x2
+DEBUG| T5 did not get write lock on x1 site: 2
+DEBUG| T5 did not get write lock on x1 site: 2
+T5 read the value 50 of variable x5
+T5 committed
+DEBUG| Clearing site locks for T5 variable: x5
+Clearing locks for T5 variable: x5
+T3 read the value 10 of variable x1
+T3 read the value 30 of variable x3
+T3 committed
+DEBUG| Clearing site locks for T3 variable: x1
+Clearing locks for T3 variable: x1
+DEBUG| Clearing site locks for T3 variable: x3
+Clearing locks for T3 variable: x3
+DEBUG| Clearing site locks for T3 variable: x4
+Clearing locks for T3 variable: x4
+=== Site 1 ===
+x10: 90 at site 1
+x4: 34 at site 1
+x2: 12 at site 1
+x8: 78 at site 1
+All other variables have same initial value
+=== Site 2 ===
+x10: 90 at site 2
+x4: 34 at site 2
+x2: 12 at site 2
+x8: 78 at site 2
+All other variables have same initial value
+=== Site 3 ===
+x10: 90 at site 3
+x4: 34 at site 3
+x2: 12 at site 3
+x8: 78 at site 3
+All other variables have same initial value
+=== Site 4 ===
+x10: 90 at site 4
+x4: 34 at site 4
+x2: 12 at site 4
+x8: 78 at site 4
+All other variables have same initial value
+=== Site 5 ===
+x10: 90 at site 5
+x4: 34 at site 5
+x2: 12 at site 5
+x8: 78 at site 5
+All other variables have same initial value
+=== Site 6 ===
+x10: 90 at site 6
+x4: 34 at site 6
+x2: 12 at site 6
+x8: 78 at site 6
+All other variables have same initial value
+=== Site 7 ===
+x10: 90 at site 7
+x4: 34 at site 7
+x2: 12 at site 7
+x8: 78 at site 7
+All other variables have same initial value
+=== Site 8 ===
+x10: 90 at site 8
+x7: 67 at site 8
+x4: 34 at site 8
+x2: 12 at site 8
+x8: 78 at site 8
+All other variables have same initial value
+=== Site 9 ===
+x10: 90 at site 9
+x4: 34 at site 9
+x2: 12 at site 9
+x8: 78 at site 9
+All other variables have same initial value
+=== Site 10 ===
+x10: 90 at site 10
+x4: 34 at site 10
+x2: 12 at site 10
+x8: 78 at site 10
+All other variables have same initial value
