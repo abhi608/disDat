@@ -5,6 +5,6 @@ done
 for FILE in input/*; do
   echo "Executing input file" $FILE;
   fileName=`cut -d / -f 2 <<< $FILE`
-  ../bin/main $FILE > output/$fileName
+  ../bin/main $FILE > output/$fileName.out
 done
 echo "\n*****Outputs are generated in output/*****"
