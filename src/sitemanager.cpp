@@ -14,7 +14,7 @@ SiteManager::SiteManager(const std::size_t num_sites_, const std::size_t num_var
     Site *site0 = new Site(0);
     sites.push_back(site0);
     for(int32_t i=1; i<= num_sites_; i++) {
-        Site *site_i = new Site(0);
+        Site *site_i = new Site(i);
         sites.push_back(site_i);
     }
 }
@@ -138,18 +138,57 @@ std::unordered_map<std::string, int64_t> SiteManager::get_current_variables(cons
 }
 
 LockTable SiteManager::get_set_locks() {
-    LockTable lock_table;
+    std::map<std::string, std::vector<Lock*>> locks;
     for(int32_t i=1; i<=num_sites; i++) {
+        // std::cout << "Site: " << i << std::endl;
         Site* site_ = get_site(i);
         std::map<std::string, std::vector<Lock*>>& lock_map = site_->get_data_manager().get_lock_table().get_lock_map();
         for(auto& [var_, curr_locks_] : lock_map) {
-            for(Lock* lock_ : curr_locks_) {
-                lock_table.get_lock_map()[var_].push_back(lock_);
+            if(locks.find(var_) == locks.end()) {
+                std::vector<Lock*> tmp;
+                locks[var_] = tmp;
+            }  
+            for(auto lock_ : curr_locks_) {
+                bool is_present = false;
+                for(auto* l : locks[var_]) {
+                    if((*l) == (*lock_)) {
+                        is_present = true;
+                        break;
+                    }
+                }
+                if(!is_present) {
+                    // std::cout << var_ << ":" << lock_->get_lock_type() << " " << lock_->get_transaction()->get_id() <<std::endl;
+                    locks[var_].push_back(lock_);
+                }
             }
         }
     }
-    return std::move(lock_table);
+    LockTable lock_table;
+    lock_table.set_lock_map(locks);
+    // std::cout << "return lock table\n"; 
+    // for(auto& l : lock_table.get_lock_map()["x2"]) {
+    //     std::cout << "QWI: " << l->get_lock_type() << " ";
+    // }
+    // std::cout << "xyz\n";
+    return lock_table;
 }
+
+// LockTable SiteManager::get_set_locks() {
+//     LockTable lock_table;
+//     for(int32_t i=1; i<=num_sites; i++) {
+//         std::cout << "Site: " << i << std::endl;
+//         Site* site_ = get_site(i);
+//         std::map<std::string, std::vector<Lock*>>& lock_map = site_->get_data_manager().get_lock_table().get_lock_map();
+//         for(auto& [var_, curr_locks_] : lock_map) {
+//             for(Lock* lock_ : curr_locks_) {
+//                 std::cout << var_ << ":" << lock_->get_lock_type() << std::endl;
+//                 if()
+//                 lock_table.get_lock_map()[var_].push_back(lock_);
+//             }
+//         }
+//     }
+//     return std::move(lock_table);
+// }
 
 void SiteManager::clear_locks(Lock* lock_, const std::string& variable_name_) {
     std::vector<int32_t> sites_ = get_sites(variable_name_);
@@ -163,5 +202,3 @@ void SiteManager::start() {
         get_site(i)->listen();
     }
 }
-
-int main() {}

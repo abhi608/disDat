@@ -4,7 +4,7 @@
 #include "lock.h"
 #include "transaction.h"
 
-Site::Site(const int32_t id_): id(id_), status(UP), data_manager(id) {
+Site::Site(const int32_t id_): id(id_), status(UP), data_manager(DataManager(id)) {
     for(int32_t i=1; i<=20; i++) {
         if((i%2 == 0) or (1+(i%10) == id_)) {
             recovered_variables.insert("x"+std::to_string(i));

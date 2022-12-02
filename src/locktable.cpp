@@ -52,6 +52,10 @@ bool LockTable::clear_lock(Lock* lock_, const std::string& variable_) {
     return true;
 }
 
+void LockTable::set_lock_map(std::map<std::string, std::vector<Lock*>> lock_map_) {
+    lock_map = lock_map_;
+}
+
 bool LockTable::is_locked_by_transaction(Transaction* current_transaction_, const std::string& variable_, const LockType lock_type_/*=NOLOCK*/) {
     if(lock_map.find(variable_) == lock_map.end()) return false;
     for(Lock* lck : lock_map[variable_]) {

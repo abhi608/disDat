@@ -1,6 +1,7 @@
 #ifndef IO_1234_H
 #define IO_1234_H
 
+#include <fstream>
 #include "instruction.h"
 #include "variable.h"
 #include "constants.h"

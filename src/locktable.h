@@ -21,6 +21,7 @@ public:
     bool is_read_locked(const std::string& variable_);
     void free(const std::string& variable_);
     bool clear_lock(Lock* lock_, const std::string& variable_);
+    void set_lock_map(std::map<std::string, std::vector<Lock*>> lock_map_);
     bool is_locked_by_transaction(Transaction* current_transaction_, const std::string& variable_, const LockType lock_type_=NOLOCK);
 };
 
