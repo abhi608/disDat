@@ -80,7 +80,6 @@ void TransactionManager::clear_deadlock(std::vector<std::string>& transaction_li
 void TransactionManager::detect_deadlock(const std::string& transaction, std::unordered_map<std::string, int32_t>& visited, std::vector<std::string>& current, std::unordered_map<std::string, std::vector<TransactionInfo>>& blocked_dict) {
     bool is_aborted = (transaction_map[transaction]->get_status() == TransactionStatus::ABORTED);
     bool is_committed = (transaction_map[transaction]->get_status() == TransactionStatus::COMMITTED);
-    // std::cout << is_aborted << " " << is_committed << "\n";
     if(blocked_dict.find(transaction) != blocked_dict.end() and !is_aborted and !is_committed) {
         visited[transaction] = current.size()+1;
         current.push_back(transaction);
@@ -101,11 +100,6 @@ void TransactionManager::detect_deadlock(const std::string& transaction, std::un
 void TransactionManager::detect_and_clear_deadlocks() {
     std::unordered_map<std::string, std::vector<TransactionInfo>> squashed_blocked_transactions = get_squashed_blocked_transactions();
     for(auto& [transaction, _] : squashed_blocked_transactions) {
-        // std::cout << "t1: " << transaction <<  " " <<   "\n";
-        // for(auto el : squashed_blocked_transactions[transaction]) {
-        //     std::cout << el.transaction << el.instruction_type << el.variable << el.value << "\n";
-        // }
-        // std::cout << "\n";
         std::unordered_map<std::string, int32_t> visited;
         std::vector<std::string> current;
         detect_deadlock(transaction, visited, current, squashed_blocked_transactions);
@@ -215,20 +209,8 @@ void TransactionManager::write_request(std::vector<std::string>& params) {
         waiting_transactions[current_time][transaction->get_name()] = std::move(waiting_transaction_info);
     } else {
         LockTable lock_table_ = site_manager->get_set_locks();
-        // for(auto& lock : lock_table_.get_lock_map()[variable]) {
-        //     std::cout << "QWA: " << lock->get_lock_type() << " ";
-        // }
-        // std::cout << "\n";
-        // for(auto& lock : lock_table_.get_lock_map()[variable]) {
-        //     std::cout << "QW: " << lock->get_lock_type() << " ";
-        // }
-        // std::cout << variable << "\n";
-
         for(auto* lock : lock_table_.get_lock_map()[variable]) {
-            // std::cout << "LOL: \n";
             const std::string& blocking_transaction = lock->get_transaction()->get_name();
-            // std::cout << blocking_transaction << std::endl;
-            // std::cout << lock->get_transaction()->get_name() << std:: endl;
             if((*(lock->get_transaction())) == (*transaction)) continue;
             
             TransactionInfo blocking_transaction_info;
@@ -458,9 +440,7 @@ void TransactionManager::end(const std::vector<std::string>& params) {
 void TransactionManager::tick(Instruction& instruction) {
     current_time++;
     clear_aborted();
-    // std::cout << "l1\n";
     detect_and_clear_deadlocks();
-    // std::cout << "l2\n";
     blocked_to_waiting();
     try_waiting();
     std::vector<std::string> &params = instruction.get_params();

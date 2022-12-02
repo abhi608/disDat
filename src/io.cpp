@@ -43,18 +43,12 @@ void IO::run() {
             bool found = false;
             for(auto& site_manager_func : SITE_MANAGER_FUNCS) {
                 if(instruction.get_instruction_type() == site_manager_func) {
-                    // std::cout << instruction.get_instruction_type() << " 1: ";
-                    // for(auto& el : instruction.get_params()) std::cout << el << " ";
-                    // std::cout << std::endl;
                     site_manager->tick(instruction);
                     found = true;
                     break;
                 } 
             }
             if(!found) {
-                // std::cout << instruction.get_instruction_type() << " 2: ";
-                // for(auto& el : instruction.get_params()) std::cout << el << " ";
-                // std::cout << std::endl;
                 transaction_manager->tick(instruction);
             }
         }

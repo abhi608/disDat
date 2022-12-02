@@ -13,8 +13,6 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
     const std::string input_file{argv[1]};
-    // constexpr int32_t num_sites{10};
-    // constexpr int32_t num_variables{20};
     SiteManager* site_manager = new SiteManager(NUM_SITES, NUM_VARIABLES);
     LockTable* lock_table = new LockTable();
     TransactionManager* transaction_manager = new TransactionManager(NUM_VARIABLES, NUM_SITES, lock_table, site_manager);
