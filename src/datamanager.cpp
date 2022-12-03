@@ -57,6 +57,7 @@ bool DataManager::get_lock(Transaction* transaction_, const LockType lock_type_,
 bool DataManager::write_variable(Transaction* transaction_, const std::string& variable_name_, int64_t value_) {
     if(lock_table.is_locked_by_transaction(transaction_, variable_name_, WRITE)) {
         variable_map[variable_name_]->set_value(value_);
+        std::cout << transaction_->get_name() << " write the value " << value_ << " of variable " << variable_name_ << std::endl;
         return true;
     }
     return false;
