@@ -90,14 +90,14 @@ void Site::dump_site() {
             }
             continue;            
         }
-        if(variable->get_value() != std::stoi(variable_name.substr(1, variable_name.size()-1))*10) {
-            count++;
+//        if(variable->get_value() != std::stoi(variable_name.substr(1, variable_name.size()-1))*10) {
+//            count++;
             std::cout << variable->get_name() << ": " << variable->get_value() << " at site " << id << std::endl;
-        }
+//        }
     }
-    if(count != data_manager.get_variables().size()) {
-        std::cout << "All other variables have same initial value" << std::endl;
-    }
+//    if(count != data_manager.get_variables().size()) {
+//        std::cout << "All other variables have same initial value 10*i" << std::endl;
+//    }
 }
 
 std::vector<Variable*> Site::get_all_variables() {

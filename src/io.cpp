@@ -30,7 +30,7 @@ std::vector<Instruction> IO::process_instruction(std::string& line) {
     if(line == "") return instructions;
     std::vector<std::string> processed_line = Util::tokenize(line, ";");
     for(auto& instruction : processed_line) {
-        if(instruction.find("//") != std::string::npos) continue;
+        if(instruction.find("//") == 0) continue;
         instructions.emplace_back(Instruction(instruction));
     }
     return instructions;
