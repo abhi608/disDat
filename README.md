@@ -3,7 +3,7 @@ Simulation of concurrency control in a distributed database
 
 Instructions:
 
-0. Please use gcc-9.2 or higher.
+0. Use gcc-9.2 or higher.
 1. To create the execuatble bin/main
 ```
     make
