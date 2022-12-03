@@ -1,0 +1,34 @@
+Starting T1
+Starting T2
+T1 got write lock on x2
+Site: 1 failed
+T1 aborted as site 1 failed
+DEBUG| Clearing site locks for T1 variable: x2
+Clearing locks for T1 variable: x2
+Starting T3
+T3 got write lock on x2
+T3 write the value 100 of variable x2
+T3 write the value 100 of variable x2
+T3 write the value 100 of variable x2
+T3 write the value 100 of variable x2
+T3 write the value 100 of variable x2
+T3 write the value 100 of variable x2
+T3 write the value 100 of variable x2
+T3 write the value 100 of variable x2
+T3 write the value 100 of variable x2
+T3 committed
+DEBUG| Clearing site locks for T3 variable: x2
+Clearing locks for T3 variable: x2
+Site: 1 recovered
+Site: 2 failed
+Site: 3 failed
+Site: 4 failed
+Site: 5 failed
+Site: 6 failed
+Site: 7 failed
+Site: 8 failed
+Site: 9 failed
+Site: 10 failed
+T2 is waiting on x2
+Starting T5
+T5 got write lock on x2
