@@ -1,3 +1,9 @@
+/**
+ * Author: Abhishek Verma
+ * Author: Shiv Sinha
+ * Date: 11/29/2022
+ */
+
 #include <iostream>
 #include "variable.h"
 
