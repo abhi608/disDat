@@ -1,3 +1,9 @@
+/**
+ * Author: Abhishek Verma
+ * Author: Shiv Sinha
+ * Date: 12/01/2022
+ */
+
 #include <iostream>
 #include "sitemanager.h"
 #include "transactionmanager.h"
